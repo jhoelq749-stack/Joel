@@ -1,0 +1,16 @@
+local TPUtil = {}
+
+function TPUtil.teleport(character, position)
+	if not character then return false end
+	local root = character:FindFirstChild("HumanoidRootPart")
+	if not root then return false end
+	root.CFrame = CFrame.new(position + Vector3.new(0, 3, 0))
+	return true
+end
+
+function TPUtil.teleportToPart(character, part)
+	if not part then return false end
+	return TPUtil.teleport(character, part.Position)
+end
+
+return TPUtil
